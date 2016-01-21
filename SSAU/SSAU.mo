@@ -8,7 +8,7 @@ package SSAU "Библиотека объектных моделей для па
         Modelica.Electrical.Analog.Basic.Ground ground1 annotation(Placement(visible = true, transformation(origin = {-40, -54}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
         Modelica.Electrical.Analog.Basic.Inductor inductor1(L = 1) annotation(Placement(visible = true, transformation(origin = {36, 20}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
         Modelica.Electrical.Analog.Basic.Resistor resistor1(R = 111) annotation(Placement(visible = true, transformation(origin = {-14, 20}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-        Electro.Gnd gnd1 annotation(Placement(visible = true, transformation(origin = {-70, -48}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+        Electro.Gnd gnd1 annotation(Placement(visible = true, transformation(origin = {-64, -44}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
       equation
         connect(inductor1.n, ground1.p) annotation(Line(points = {{46, 20}, {56, 20}, {56, -44}, {-40, -44}, {-40, -44}}, color = {0, 0, 255}));
         connect(resistor1.n, inductor1.p) annotation(Line(points = {{-4, 20}, {26, 20}, {26, 20}, {26, 20}}, color = {0, 0, 255}));
