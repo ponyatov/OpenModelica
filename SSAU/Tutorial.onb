@@ -173,40 +173,6 @@ p, li { white-space: pre-wrap; }
 &lt;p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">&lt;span style=" font-family:'Times New Roman'; font-size:12pt; color:#000000;">Для работы &lt;/span>&lt;span style=" font-family:'Times New Roman'; font-size:12pt; font-weight:600; color:#000000;">plot&lt;/span>&lt;span style=" font-family:'Times New Roman'; font-size:12pt; color:#000000;"> на компьютере необходима установленная Жаба. &lt;/span>&lt;/p>
 &lt;p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">&lt;span style=" font-family:'Times New Roman'; font-size:12pt; font-style:italic; color:#000000;">* непонятно, почему для реализации блокнота не была использована какая-нибудь OpenSource реализация простого текстового процессора, например огрызок OpenOffice или Joeffice&lt;/span>&lt;/p>&lt;/td>&lt;/tr>&lt;/table>&lt;/body>&lt;/html></Text>
     </TextCell>
-    <TextCell style="Text">
-      <Text>&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd">
-&lt;html>&lt;head>&lt;meta name="qrichtext" content="1" />&lt;style type="text/css">
-p, li { white-space: pre-wrap; }
-&lt;/style>&lt;/head>&lt;body style=" font-family:'MS Shell Dlg 2'; font-size:8.25pt; font-weight:400; font-style:normal;">
-&lt;table border="0" style="-qt-table-type: root; margin-top:5px; margin-bottom:5px; margin-left:5px; margin-right:5px;">
-&lt;tr>
-&lt;td style="border: none;">
-&lt;p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">&lt;span style=" font-family:'Times New Roman'; font-size:12pt; color:#000000;">Использование TeX разметки&lt;/span>&lt;/p>&lt;/td>&lt;/tr>&lt;/table>&lt;/body>&lt;/html></Text>
-    </TextCell>
-    <LatexCell style="Latex" closed="false">
-      <Input>\documentclass{empty}\begin{document}\LaTeX\end{document}</Input>
-      <Output>This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9)
-entering extended mode
-
-(C:////Users////dmitry////AppData////Local////Temp/////OpenModelica//latexfileq
-t_temp.oif736.tex
-LaTeX2e &lt;2014/05/01>
-Babel &lt;3.9k> and hyphenation patterns for 68 languages loaded.
-No file latexfileqt_temp.oif736.aux.
-
-! LaTeX Error: The font size command \normalsize is not defined:
-               there is probably something wrong with the class file.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H &lt;return>  for immediate help.
- ...                                              
-                                                  
-l.1 \begin{document}
-                     \thispagestyle{empty}\TeX\end{document}
-No pages of output.
-Transcript written on latexfileqt_temp.oif736.log.
-</Output>
-    </LatexCell>
     <TextCell style="Section">
       <Text>&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd">
 &lt;html>&lt;head>&lt;meta name="qrichtext" content="1" />&lt;style type="text/css">
