@@ -1,20 +1,28 @@
 package SSAU "Библиотека объектных моделей для пакета OpenModelica"
-  model RL_circuit
-    Modelica.Electrical.Analog.Sources.SineVoltage sineVoltage1(V = 1, freqHz = 50) annotation(Placement(visible = true, transformation(origin = {-40, -24}, extent = {{-10, 10}, {10, -10}}, rotation = -90)));
-    Modelica.Electrical.Analog.Basic.Ground ground1 annotation(Placement(visible = true, transformation(origin = {-40, -54}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-    Modelica.Electrical.Analog.Basic.Inductor inductor1(L = 1) annotation(Placement(visible = true, transformation(origin = {36, 20}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-    Modelica.Electrical.Analog.Basic.Resistor resistor1(R = 111) annotation(Placement(visible = true, transformation(origin = {-14, 20}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  equation
-    connect(inductor1.n, ground1.p) annotation(Line(points = {{46, 20}, {56, 20}, {56, -44}, {-40, -44}, {-40, -44}}, color = {0, 0, 255}));
-    connect(resistor1.n, inductor1.p) annotation(Line(points = {{-4, 20}, {26, 20}, {26, 20}, {26, 20}}, color = {0, 0, 255}));
-    connect(sineVoltage1.p, resistor1.p) annotation(Line(points = {{-40, -14}, {-40, -14}, {-40, 20}, {-24, 20}, {-24, 20}}, color = {0, 0, 255}));
-    connect(ground1.p, sineVoltage1.n) annotation(Line(points = {{-40, -44}, {-40, -44}, {-40, -34}, {-40, -34}, {-40, -34}}, color = {0, 0, 255}));
-    annotation(Icon(coordinateSystem(extent = {{-100, -100}, {100, 100}}, preserveAspectRatio = true, initialScale = 0.1, grid = {2, 2})), Diagram(coordinateSystem(extent = {{-100, -100}, {100, 100}}, preserveAspectRatio = true, initialScale = 0.1, grid = {2, 2})), experiment(StartTime = 0, StopTime = 3, Tolerance = 1e-06, Interval = 0.0006));
-  end RL_circuit;
-
   package Electro "Электротехника и аналоговая электроника"
+    package Samples "Примеры расчета схем"
+      extends Modelica.Icons.Information;
+
+      model EsinRL
+        Modelica.Electrical.Analog.Sources.SineVoltage sineVoltage1(V = 1, freqHz = 50) annotation(Placement(visible = true, transformation(origin = {-40, -24}, extent = {{-10, 10}, {10, -10}}, rotation = -90)));
+        Modelica.Electrical.Analog.Basic.Ground ground1 annotation(Placement(visible = true, transformation(origin = {-40, -54}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+        Modelica.Electrical.Analog.Basic.Inductor inductor1(L = 1) annotation(Placement(visible = true, transformation(origin = {36, 20}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+        Modelica.Electrical.Analog.Basic.Resistor resistor1(R = 111) annotation(Placement(visible = true, transformation(origin = {-14, 20}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+        Electro.Gnd gnd1 annotation(Placement(visible = true, transformation(origin = {-56, 48}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+      equation
+        connect(inductor1.n, ground1.p) annotation(Line(points = {{46, 20}, {56, 20}, {56, -44}, {-40, -44}, {-40, -44}}, color = {0, 0, 255}));
+        connect(resistor1.n, inductor1.p) annotation(Line(points = {{-4, 20}, {26, 20}, {26, 20}, {26, 20}}, color = {0, 0, 255}));
+        connect(sineVoltage1.p, resistor1.p) annotation(Line(points = {{-40, -14}, {-40, -14}, {-40, 20}, {-24, 20}, {-24, 20}}, color = {0, 0, 255}));
+        connect(ground1.p, sineVoltage1.n) annotation(Line(points = {{-40, -44}, {-40, -44}, {-40, -34}, {-40, -34}, {-40, -34}}, color = {0, 0, 255}));
+        annotation(Diagram(coordinateSystem(extent = {{-100, -100}, {100, 100}}, preserveAspectRatio = true, initialScale = 0.1, grid = {2, 2})), experiment(StartTime = 0, StopTime = 3, Tolerance = 1e-06, Interval = 0.0006), Icon(coordinateSystem(extent = {{-100, -100}, {100, 100}}, preserveAspectRatio = true, initialScale = 0.1, grid = {2, 2}), graphics = {Rectangle(origin = {-30, 50}, extent = {{-30, 10}, {70, -30}}), Line(origin = {0, -20.2764}, points = {{-60, -19.7236}, {-40, -19.7236}, {-20, 20.2764}, {0, -19.7236}, {20, 18.2764}, {40, -19.7236}, {60, -19.7236}})}));
+      end EsinRL;
+    end Samples;
+
     model Gnd "Земля (нулевой потенциал)"
-      annotation(Documentation(info = "<html>(расчетная) Земля электрической цепи с нулевым потенциалом.<p>В пакете SPICE этому элементу соответствует узел 0<br>(и GND в некоторых диалектах типа ng-spice)<p><font color=\"red\">Любая электрическая цепь обязана включать как минимум один элемент <b>Gnd</b></font>,<br>так как он задает нулевую точку, от которой отсчитываются все потенциалы при расчетах.</html>"));
+      Interfaces.Pin p;
+    equation
+      p.v = 0;
+      annotation(Documentation(info = "<html>(расчетная) Земля электрической цепи с нулевым потенциалом.<p>В пакете SPICE этому элементу соответствует узел 0<br>(и GND в некоторых диалектах типа ng-spice)<p><font color=\"red\">Любая электрическая цепь обязана включать как минимум один элемент <b>Gnd</b></font>,<br>так как он задает нулевую точку, от которой отсчитываются все потенциалы при расчетах.</html>"), Icon(coordinateSystem(extent = {{-100, -100}, {100, 100}}, preserveAspectRatio = true, initialScale = 0.1, grid = {2, 2}), graphics = {Line(origin = {0, -40}, points = {{-80, -40}, {80, -40}}, thickness = 11), Line(origin = {0, -40}, points = {{0, -40}, {0, 120}}, thickness = 11), Ellipse(origin = {60, -30}, lineThickness = 5, extent = {{-30, 40}, {10, -20}}, endAngle = 360)}), Diagram(coordinateSystem(extent = {{-100, -100}, {100, 100}}, preserveAspectRatio = true, initialScale = 0.1, grid = {2, 2}), graphics = {Line(origin = {0, -40}, points = {{-40, 0}, {40, 0}}, thickness = 5), Line(points = {{0, -40}, {0, 40}}, thickness = 1), Text(origin = {68, -3}, extent = {{120, -33}, {-50, 35}}, textString = "%name")}));
     end Gnd;
     annotation(Documentation(info = "<html>
   <h3>ГОСТ ЕСКД</h3>
