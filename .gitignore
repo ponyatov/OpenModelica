@@ -1,10 +1,11 @@
 *~
 *swp
 InstallMode.txt
-MinGW
+MinGW/
 Uninstall.exe
-bin
-icons
-include
-lib
-share
+bin/
+icons/
+include/
+lib/
+share/
+doc/
