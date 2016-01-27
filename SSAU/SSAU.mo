@@ -1,5 +1,5 @@
 package SSAU "Библиотека объектных моделей для пакета OpenModelica"
-  extends Modelica.Icons.Example;
+  //  extends Modelica.Icons.Example;
 
   package Electro "Электротехника и аналоговая электроника"
     package Samples "Примеры расчета схем"
@@ -45,7 +45,13 @@ package SSAU "Библиотека объектных моделей для па
   end Automatics;
 
   package Modelica "учебные примеры и метапрограммирование"
-    extends Modelica.Icons.References;
+    //    extends Modelica.Icons.References;
+
+    class HelloWorld "[fritz, p.58]"
+      Real x(start = .1);
+    equation
+      der(x) = -x;
+    end HelloWorld;
     annotation(Icon(coordinateSystem(extent = {{-100, -100}, {100, 100}}, preserveAspectRatio = true, initialScale = 0.1, grid = {2, 2})), Diagram(coordinateSystem(extent = {{-100, -100}, {100, 100}}, preserveAspectRatio = true, initialScale = 0.1, grid = {2, 2})));
   end Modelica;
   annotation(Documentation(info = "<html>
