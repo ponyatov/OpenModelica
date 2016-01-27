@@ -32,14 +32,13 @@ package SSAU "Библиотека объектных моделей для па
   end Electro;
 
   package Automatics "Автоматические системы управления"
-    class VanDerPol "модель генератора Van der Pol"
+    class VanDerPol "модель генератора Van der Pol [fritz.p.59]"
       Real x(start = 1);
       Real y(start = 1);
       parameter Real lambda = 0.3;
     equation
       der(x) = y;
       der(y) = (-x) + lambda * (1 - x ^ 2) * y;
-      annotation(Documentation(info = "[fritz, p.56]"));
     end VanDerPol;
     annotation(Diagram(coordinateSystem(extent = {{-100, -100}, {100, 100}}, preserveAspectRatio = true, initialScale = 0.1, grid = {2, 2})), Icon(coordinateSystem(extent = {{-100, -100}, {100, 100}}, preserveAspectRatio = true, initialScale = 0.1, grid = {2, 2}), graphics = {Rectangle(origin = {18, -12}, extent = {{-42, 38}, {42, -40}}), Ellipse(origin = {-60, -12}, extent = {{-20, 20}, {20, -20}}, endAngle = 360), Line(origin = {-32, -12}, points = {{-8, 0}, {8, 0}}), Line(origin = {-90, -12}, points = {{10, 0}, {-10, 0}}), Line(origin = {10, -42}, points = {{-70, 10}, {-70, -50}, {70, -50}, {70, 30}}), Line(origin = {80, -12}, points = {{-20, 0}, {20, 0}}), Line(origin = {15.9749, 71.4563}, points = {{-33.9749, 28.5437}, {-13.9749, -29.4563}, {2.0251, 28.5437}, {14.0251, -29.4563}, {34.0251, 28.5437}})}));
   end Automatics;
@@ -48,7 +47,7 @@ package SSAU "Библиотека объектных моделей для па
     //    extends Modelica.Icons.References;
 
     class HelloWorld "[fritz, p.58]"
-      Real x(start = .1);
+      Real x(start = 1);
     equation
       der(x) = -x;
     end HelloWorld;
