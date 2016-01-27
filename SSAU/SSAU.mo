@@ -30,6 +30,10 @@ package SSAU "Библиотека объектных моделей для па
   end Electro;
 
   extends Modelica.Icons.Example;
+
+  package Automatics "Автоматические системы управления"
+    annotation(Diagram(coordinateSystem(extent = {{-100, -100}, {100, 100}}, preserveAspectRatio = true, initialScale = 0.1, grid = {2, 2})), Icon(coordinateSystem(extent = {{-100, -100}, {100, 100}}, preserveAspectRatio = true, initialScale = 0.1, grid = {2, 2}), graphics = {Rectangle(origin = {18, 0}, extent = {{-42, 38}, {42, -40}}), Ellipse(origin = {-60, 0}, extent = {{-20, 20}, {20, -20}}, endAngle = 360), Line(origin = {-32, 0}, points = {{-8, 0}, {8, 0}}), Line(origin = {-90, 0}, points = {{10, 0}, {-10, 0}}), Line(origin = {10, -30}, points = {{-70, 10}, {-70, -50}, {70, -50}, {70, 30}}), Line(origin = {80, 0}, points = {{-20, 0}, {20, 0}}), Line(origin = {13.9749, 71.4563}, points = {{-33.9749, 28.5437}, {-13.9749, -29.4563}, {2.0251, 28.5437}, {14.0251, -29.4563}, {34.0251, 28.5437}})}));
+  end Automatics;
   annotation(Documentation(info = "<html>
 <hr>
 Пакет объектно-ориентированного моделирования<br>на основе систем уравнений <b>OpenModelica</b><br><a href=\"https://openmodelica.org/\">https://openmodelica.org/</a><p>
