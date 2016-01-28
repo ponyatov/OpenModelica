@@ -55,27 +55,33 @@ package SSAU "Библиотека объектных моделей для па
   end Modelica;
 
   package DynaFlight "Динамика полета (космических аппаратов)"
-    class fritzRocket "класс ракеты [fritz,p.62]"
-      parameter String name;
-      Real mass(start = 1038.358);
-      Real altitude(start = 59404);
-      Real velocity(start = -2003);
-      Real acceleration;
-      // сила тяги
-      Real thrust;
-      // поле гравитации
-      Real gravity;
-      parameter Real massLossRate = 0.000277;
-    equation
-      /* ускорение */
-      acceleration = (thrust - mass * gravity) / mass;
-      /* потеря массы (топлива) */
-      der(mass) = -massLossRate * abs(thrust);
-      // связка базовых переменных: высота, скорость, ускорение
-      der(altitude) = velocity;
-      der(velocity) = acceleration;
-      annotation(Icon(coordinateSystem(extent = {{-100, -100}, {100, 100}}, preserveAspectRatio = true, initialScale = 0.1, grid = {2, 2}), graphics = {Polygon(origin = {0, 8.78493}, points = {{0, 91.2151}, {40, -68.7849}, {20, -90.7849}, {0, -66.7849}, {-20, -88.7849}, {-40, -68.7849}, {0, 91.2151}}), Line(origin = {-52.7899, -39.8155}, points = {{12.7899, -18.1845}, {2.78986, -40.1845}, {-27.2101, -40.1845}, {-7.21014, 19.8155}, {26.7899, 39.8155}}), Line(origin = {52.7899, -39.8155}, points = {{-12.7899, -20.1845}, {-2.78986, -40.1845}, {27.2101, -40.1845}, {7.21014, 19.8155}, {-26.7899, 39.8155}})}));
-    end fritzRocket;
+    package fritzMoonLangingTutor
+      class fritzRocket "класс ракеты [fritz,p.62]"
+        parameter String name;
+        Real mass(start = 1038.358);
+        Real altitude(start = 59404);
+        Real velocity(start = -2003);
+        Real acceleration;
+        // сила тяги
+        Real thrust;
+        // поле гравитации
+        Real gravity;
+        parameter Real massLossRate = 0.000277;
+      equation
+        /* ускорение */
+        acceleration = (thrust - mass * gravity) / mass;
+        /* потеря массы (топлива) */
+        der(mass) = -massLossRate * abs(thrust);
+        // связка базовых переменных: высота, скорость, ускорение
+        der(altitude) = velocity;
+        der(velocity) = acceleration;
+        annotation(Icon(coordinateSystem(extent = {{-100, -100}, {100, 100}}, preserveAspectRatio = true, initialScale = 0.1, grid = {2, 2}), graphics = {Polygon(origin = {0, 8.78493}, points = {{0, 91.2151}, {40, -68.7849}, {20, -90.7849}, {0, -66.7849}, {-20, -88.7849}, {-40, -68.7849}, {0, 91.2151}}), Line(origin = {-52.7899, -39.8155}, points = {{12.7899, -18.1845}, {2.78986, -40.1845}, {-27.2101, -40.1845}, {-7.21014, 19.8155}, {26.7899, 39.8155}}), Line(origin = {52.7899, -39.8155}, points = {{-12.7899, -20.1845}, {-2.78986, -40.1845}, {27.2101, -40.1845}, {7.21014, 19.8155}, {-26.7899, 39.8155}})}));
+      end fritzRocket;
+
+      fritzRocket fritzRocket1 annotation(Placement(visible = true, transformation(origin = {-28, 42}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+      annotation(Icon(coordinateSystem(extent = {{-100, -100}, {100, 100}}, preserveAspectRatio = true, initialScale = 0.1, grid = {2, 2})), Diagram(coordinateSystem(extent = {{-100, -100}, {100, 100}}, preserveAspectRatio = true, initialScale = 0.1, grid = {2, 2})));
+      annotation(Icon(coordinateSystem(extent = {{-100, -100}, {100, 100}}, preserveAspectRatio = true, initialScale = 0.1, grid = {2, 2})), Diagram(coordinateSystem(extent = {{-100, -100}, {100, 100}}, preserveAspectRatio = true, initialScale = 0.1, grid = {2, 2})));
+    end fritzMoonLangingTutor;
     annotation(Icon(coordinateSystem(extent = {{-100, -100}, {100, 100}}, preserveAspectRatio = true, initialScale = 0.1, grid = {2, 2})), Diagram(coordinateSystem(extent = {{-100, -100}, {100, 100}}, preserveAspectRatio = true, initialScale = 0.1, grid = {2, 2})));
   end DynaFlight;
   annotation(Documentation(info = "<html>
