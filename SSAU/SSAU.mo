@@ -79,6 +79,13 @@ package SSAU "Библиотека объектных моделей для па
       end fritzRocket;
 
       fritzRocket fritzRocket1 annotation(Placement(visible = true, transformation(origin = {-28, 42}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+
+      class CelestialBody
+        constant Real g = 6.672e-11;
+        parameter Real radius;
+        parameter String name;
+        parameter Real mass;
+      end CelestialBody;
       annotation(Icon(coordinateSystem(extent = {{-100, -100}, {100, 100}}, preserveAspectRatio = true, initialScale = 0.1, grid = {2, 2})), Diagram(coordinateSystem(extent = {{-100, -100}, {100, 100}}, preserveAspectRatio = true, initialScale = 0.1, grid = {2, 2})));
       annotation(Icon(coordinateSystem(extent = {{-100, -100}, {100, 100}}, preserveAspectRatio = true, initialScale = 0.1, grid = {2, 2})), Diagram(coordinateSystem(extent = {{-100, -100}, {100, 100}}, preserveAspectRatio = true, initialScale = 0.1, grid = {2, 2})));
     end fritzMoonLangingTutor;
