@@ -56,8 +56,16 @@ package SSAU "Библиотека объектных моделей для па
 
   package DynaFlight "Динамика полета (космических аппаратов)"
     package fritzMoonLangingTutor
-      class fritzRocket "класс ракеты [fritz,p.62]"
+      class CelestialBody
+        constant Real g = 6.672e-11;
+        parameter Real radius;
         parameter String name;
+        parameter Real mass;
+        annotation(Icon(coordinateSystem(extent = {{-100, -100}, {100, 100}}, preserveAspectRatio = true, initialScale = 0.1, grid = {2, 2}), graphics = {Ellipse(origin = {5, -3}, fillColor = {154, 154, 154}, fillPattern = FillPattern.CrossDiag, extent = {{-99, 97}, {91, -93}}, endAngle = 360)}));
+      end CelestialBody;
+
+      class Rocket "класс ракеты [fritz,p.62]"
+        parameter String name "название";
         Real mass(start = 1038.358);
         Real altitude(start = 59404);
         Real velocity(start = -2003);
@@ -75,17 +83,26 @@ package SSAU "Библиотека объектных моделей для па
         // связка базовых переменных: высота, скорость, ускорение
         der(altitude) = velocity;
         der(velocity) = acceleration;
-        annotation(Icon(coordinateSystem(extent = {{-100, -100}, {100, 100}}, preserveAspectRatio = true, initialScale = 0.1, grid = {2, 2}), graphics = {Polygon(origin = {0, 8.78493}, points = {{0, 91.2151}, {40, -68.7849}, {20, -90.7849}, {0, -66.7849}, {-20, -88.7849}, {-40, -68.7849}, {0, 91.2151}}), Line(origin = {-52.7899, -39.8155}, points = {{12.7899, -18.1845}, {2.78986, -40.1845}, {-27.2101, -40.1845}, {-7.21014, 19.8155}, {26.7899, 39.8155}}), Line(origin = {52.7899, -39.8155}, points = {{-12.7899, -20.1845}, {-2.78986, -40.1845}, {27.2101, -40.1845}, {7.21014, 19.8155}, {-26.7899, 39.8155}})}));
-      end fritzRocket;
+        annotation(Icon(coordinateSystem(extent = {{-100, -100}, {100, 100}}, preserveAspectRatio = true, initialScale = 0.1, grid = {2, 2}), graphics = {Polygon(origin = {0, 8.78493}, points = {{0, 91.2151}, {40, -68.7849}, {20, -90.7849}, {0, -66.7849}, {-20, -88.7849}, {-40, -68.7849}, {0, 91.2151}}), Line(origin = {-52.7899, -39.8155}, points = {{12.7899, -18.1845}, {2.78986, -40.1845}, {-27.2101, -40.1845}, {-7.21014, 19.8155}, {26.7899, 39.8155}}), Line(origin = {52.7899, -39.8155}, points = {{-12.7899, -20.1845}, {-2.78986, -40.1845}, {27.2101, -40.1845}, {7.21014, 19.8155}, {-26.7899, 39.8155}}), Text(origin = {3, -93}, extent = {{-77, -35}, {77, 35}}, textString = "%name%")}));
+      end Rocket;
 
-      fritzRocket fritzRocket1 annotation(Placement(visible = true, transformation(origin = {-28, 42}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+      class MoonLanding
+        parameter Real force1 = 36350 "сила 1";
+        parameter Real force2 = 1308 "сила 2";
+      protected
+        parameter Real thrustEndTime = 210;
+        parameter Real thrustDecreaseTime = 43.2;
+      public
+        Rocket apollo(name = "apollo13");
+        CelestialBody moon(name = "moon", mass = 7.382e22, radius = 1.738e6);
+      equation
+        apollo.thrust = if time < thrustDecreaseTime then force1 else if time < thrustEndTime then force2 else 0;
+        apollo.gravity = moon.g * moon.mass / (apollo.altitude + moon.radius) ^ 2;
+        annotation(Icon(coordinateSystem(extent = {{-100, -100}, {100, 100}}, preserveAspectRatio = true, initialScale = 0.1, grid = {2, 2}), graphics = {Rectangle(origin = {0, -70}, fillColor = {161, 161, 161}, fillPattern = FillPattern.Solid, extent = {{-100, 30}, {100, -30}}), Polygon(origin = {-20, 28.87}, fillColor = {255, 255, 0}, fillPattern = FillPattern.Solid, points = {{-0.000794664, 49.13}, {19.9992, -28.87}, {7.99921, -48.87}, {-0.000794664, -28.87}, {-10.0008, -48.87}, {-20.0008, -26.87}, {-0.000794664, 49.13}})}));
+      end MoonLanding;
 
-      class CelestialBody
-        constant Real g = 6.672e-11;
-        parameter Real radius;
-        parameter String name;
-        parameter Real mass;
-      end CelestialBody;
+      MoonLanding moonLanding1 annotation(Placement(visible = true, transformation(origin = {-18, -16}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+      Rocket rocket1 annotation(Placement(visible = true, transformation(origin = {-26, 60}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
       annotation(Icon(coordinateSystem(extent = {{-100, -100}, {100, 100}}, preserveAspectRatio = true, initialScale = 0.1, grid = {2, 2})), Diagram(coordinateSystem(extent = {{-100, -100}, {100, 100}}, preserveAspectRatio = true, initialScale = 0.1, grid = {2, 2})));
       annotation(Icon(coordinateSystem(extent = {{-100, -100}, {100, 100}}, preserveAspectRatio = true, initialScale = 0.1, grid = {2, 2})), Diagram(coordinateSystem(extent = {{-100, -100}, {100, 100}}, preserveAspectRatio = true, initialScale = 0.1, grid = {2, 2})));
     end fritzMoonLangingTutor;
