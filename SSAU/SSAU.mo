@@ -53,6 +53,30 @@ package SSAU "Библиотека объектных моделей для па
     end HelloWorld;
     annotation(Icon(coordinateSystem(extent = {{-100, -100}, {100, 100}}, preserveAspectRatio = true, initialScale = 0.1, grid = {2, 2})), Diagram(coordinateSystem(extent = {{-100, -100}, {100, 100}}, preserveAspectRatio = true, initialScale = 0.1, grid = {2, 2})));
   end Modelica;
+
+  package DynaFlight "Динамика полета (космических аппаратов)"
+    class fritzRocket "класс ракеты [fritz,p.62]"
+      parameter String name;
+      Real mass(start = 1038.358);
+      Real altitude(start = 59404);
+      Real velocity(start = -2003);
+      Real acceleration;
+      // сила тяги
+      Real thrust;
+      // поле гравитации
+      Real gravity;
+      parameter Real massLossRate = 0.000277;
+    equation
+      /* ускорение */
+      acceleration = (thrust - mass * gravity) / mass;
+      /* потеря массы (топлива) */
+      der(mass) = -massLossRate * abs(thrust);
+      // связка базовых переменных: высота, скорость, ускорение
+      der(altitude) = velocity;
+      der(velocity) = acceleration;
+    end fritzRocket;
+    annotation(Icon(coordinateSystem(extent = {{-100, -100}, {100, 100}}, preserveAspectRatio = true, initialScale = 0.1, grid = {2, 2})), Diagram(coordinateSystem(extent = {{-100, -100}, {100, 100}}, preserveAspectRatio = true, initialScale = 0.1, grid = {2, 2})));
+  end DynaFlight;
   annotation(Documentation(info = "<html>
 <hr>
 Пакет объектно-ориентированного моделирования<br>на основе систем уравнений <b>OpenModelica</b><br><a href=\"https://openmodelica.org/\">https://openmodelica.org/</a><p>
