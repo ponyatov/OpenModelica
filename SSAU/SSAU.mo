@@ -109,6 +109,28 @@ package SSAU "Библиотека объектных моделей для па
     end fritzMoonLangingTutor;
     annotation(Icon(coordinateSystem(extent = {{-100, -100}, {100, 100}}, preserveAspectRatio = true, initialScale = 0.1, grid = {2, 2})), Diagram(coordinateSystem(extent = {{-100, -100}, {100, 100}}, preserveAspectRatio = true, initialScale = 0.1, grid = {2, 2})));
   end DynaFlight;
+
+  package OOP
+    class ColorData
+      parameter Real red = 0.2;
+      parameter Real blue = 0.6;
+      Real green;
+    end ColorData;
+
+    class ErrorColor
+      extends ColorData;
+      parameter Real blue = 0.6;
+      //  parameter Real red = 0.3;
+    equation
+      red + blue + green = 1;
+      red + blue + green = 1;
+    end ErrorColor;
+    annotation(Icon(coordinateSystem(extent = {{-100, -100}, {100, 100}}, preserveAspectRatio = true, initialScale = 0.1, grid = {2, 2})), Diagram(coordinateSystem(extent = {{-100, -100}, {100, 100}}, preserveAspectRatio = true, initialScale = 0.1, grid = {2, 2})));
+  end OOP;
+
+  package GameTheory "моделирование игровой динамики и математическая теория игр"
+    annotation(Icon(coordinateSystem(extent = {{-100, -100}, {100, 100}}, preserveAspectRatio = true, initialScale = 0.1, grid = {2, 2}), graphics = {Ellipse(origin = {1, 63}, lineColor = {255, 0, 0}, fillColor = {255, 255, 0}, fillPattern = FillPattern.Solid, extent = {{-21, 11}, {21, -11}}, endAngle = 360), Ellipse(origin = {1, 37}, fillColor = {85, 255, 0}, fillPattern = FillPattern.Solid, extent = {{-41, 15}, {41, -15}}, endAngle = 360), Ellipse(fillColor = {0, 0, 255}, fillPattern = FillPattern.Solid, extent = {{-60, 20}, {60, -20}}, endAngle = 360), Ellipse(origin = {0, -40}, fillColor = {255, 255, 0}, fillPattern = FillPattern.Solid, extent = {{-80, 20}, {80, -20}}, endAngle = 360), Rectangle(origin = {0, -80}, fillColor = {255, 0, 0}, fillPattern = FillPattern.Solid, extent = {{-100, 20}, {100, -20}})}));
+  end GameTheory;
   annotation(Documentation(info = "<html>
 <hr>
 Пакет объектно-ориентированного моделирования<br>на основе систем уравнений <b>OpenModelica</b><br><a href=\"https://openmodelica.org/\">https://openmodelica.org/</a><p>
